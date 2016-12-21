@@ -1,13 +1,17 @@
 /* jshint -W138 */
 
 // Import constants from actions
-const { ADD_ITEM, TOGGLE_ITEM, SET_VISIBILITY_FILTER, visibilityFilters } = require('./actions');
+const { ADD_ITEM, REMOVE_ITEM, TOGGLE_ITEM, SET_VISIBILITY_FILTER, visibilityFilters } = require('./actions');
 
 // `state` is just the items
 function items (state = [], action) {
   switch (action.type) {
     case ADD_ITEM:
       return [ ...state, { text: action.payload, completed: false } ];
+    case REMOVE_ITEM:
+      return state.filter((item, index) => {
+        return index !== action.payload;
+      });
     case TOGGLE_ITEM:
       return state.map((item, index) => {
         return index !== action.payload ? item : Object.assign({}, item, { completed: !item.completed });

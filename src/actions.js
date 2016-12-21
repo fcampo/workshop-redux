@@ -1,5 +1,6 @@
 // Create constants for action names
 const ADD_ITEM = 'ADD_ITEM';
+const REMOVE_ITEM = 'REMOVE_ITEM';
 const TOGGLE_ITEM = 'TOGGLE_ITEM';
 const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
 
@@ -9,6 +10,10 @@ const visibilityFilters = { SHOW_ALL: 'SHOW_ALL', SHOW_INCOMPLETE: 'SHOW_INCOMPL
 // Action creators
 function addItem (text) {
   return { type: ADD_ITEM, payload: text };
+}
+
+function removeItem (index) {
+  return { type: REMOVE_ITEM, payload: index };
 }
 
 function toggleItem (index) {
@@ -21,11 +26,13 @@ function setVisibilityFilter (filter) {
 
 module.exports = {
   ADD_ITEM,
+  REMOVE_ITEM,
   TOGGLE_ITEM,
   SET_VISIBILITY_FILTER,
   visibilityFilters,
 
   addItem,
+  removeItem,
   toggleItem,
   setVisibilityFilter
 };
